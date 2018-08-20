@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const locales = ['en', 'fr'];
 
@@ -23,6 +24,11 @@ module.exports = locales.map(locale => ({
     }
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      excludeChunks: ['another', 'third'],
+      filename: `${locale}.html`
+    }),
     new webpack.EnvironmentPlugin({
       LOCALE: locale,
     }),
