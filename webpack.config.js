@@ -12,7 +12,7 @@ module.exports = locales.map(locale => ({
   },
   mode: 'none',
   output: {
-    filename: `[name].${locale}.js`,
+    filename: `[name].${locale}.[contenthash].js`,
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd'
   },
