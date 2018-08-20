@@ -12,6 +12,14 @@ module.exports = locales.map(locale => ({
     third: './src/third',
   },
   mode: 'none',
+  module: {
+    rules: [
+      {
+        test: /translation/,
+        use: 'raw-loader'
+      }
+    ]
+  },
   output: {
     filename: `[name].${locale}.[contenthash].js`,
     path: path.resolve(__dirname, 'dist'),

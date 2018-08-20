@@ -2,7 +2,7 @@ import { fromPairs } from 'lodash';
 import I18nModel from '../i18n-model';
 
 function loadTranslationDataForTestKey(locale) {
-  return fromPairs(['test key', require(`raw-loader!../translation/test key/${locale}`)])
+  return fromPairs(['test key', require(`raw-loader!../translation/${locale}/test key`)])
 }
 
 const enI18n = new I18nModel({
