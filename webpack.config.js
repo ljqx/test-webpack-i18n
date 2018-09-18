@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const locales = ['en', 'fr'];
+const locales = ['de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'pt-BR', 'pt-PT', 'zh-Hans', 'zh-Hant'];
 
 module.exports = locales.map(locale => ({
   name: locale,
@@ -23,13 +23,15 @@ module.exports = locales.map(locale => ({
   output: {
     filename: `[name].${locale}.[contenthash].js`,
     path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'umd'
   },
   optimization: {
     splitChunks: {
       chunks: 'all',
       minSize: 1,
     }
+  },
+  node: {
+    process: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -40,5 +42,9 @@ module.exports = locales.map(locale => ({
     new webpack.EnvironmentPlugin({
       LOCALE: locale,
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery/dist/jquery.min',
+      _: 'lodash/lodash.min'
+    })
   ]
 }));
