@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const locales = ['de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'pt-BR', 'pt-PT', 'zh-Hans', 'zh-Hant'];
+// const locales = ['de', 'en', 'es', 'fr', 'pt-BR', 'pt-PT', 'zh-Hant'];
+// const locales = ['de'];
 
 module.exports = locales.map(locale => ({
   name: locale,
